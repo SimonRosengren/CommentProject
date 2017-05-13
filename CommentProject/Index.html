@@ -12,29 +12,11 @@
     <div>
         <h2>Make comment</h2>
         <input type="text" id="comment" size="5" />
-        <input type="button" value="Post" onclick="addComment();" />
+        <input type="button" value="Post" onclick="CommentProject.Api.addComment();" />
     </div>
 
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
-    <script>
-        var uri = '/api/Comment';
-
-        function addComment () {
-            $.post('api/Comment/Put', { "": $('#comment').val() });
-        }
-        $(document).ready(function () {
-            // Send an AJAX request
-            $.getJSON(uri)
-                .done(function (data) {
-                    // On success, 'data' contains a list of products.
-                    $.each(data, function (key, item) {
-                        // Add a list item for the product.
-                        $('<li>', { text: formatItem(item) }).appendTo($('#comments'));
-                    });
-                });
-        });
-
-
-    </script>
+        <script src="/scripts/CommentProject/ApiScript.js"></script>
+    <script>$(Document).ready(CommentProject.Api.getAllComments())</script>
 </body>
 </html>
