@@ -9,7 +9,7 @@
         /*GET ALL COMMENTS*/
         getAllComments: function () {
             // Send an AJAX request
-            $.getJSON('api/Comment')
+            $.getJSON('/api/Comment')
                 .done(function (data) {
                     // On success, 'data' contains a list of products.
                     $.each(data, function (key, item) {
