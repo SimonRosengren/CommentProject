@@ -12,17 +12,15 @@ namespace CommentProject.ApiControllers
     {
         /*Add a comment to the database*/
         [HttpPost]
-        public IHttpActionResult Put([FromBody] string comment)
+        public IHttpActionResult Put(Comment comment)
         {  
             if (comment == null)
             {
                 return BadRequest();
             }
-            Comment newComment = new Comment();
-            newComment.Message = comment;
             using (var db = new CommentDbContext())
             {
-                var returnValue = db.Comments.Add(newComment);
+                var returnValue = db.Comments.Add(comment);
                 db.SaveChanges();
                 return Ok(returnValue); //returns the comment that ahs been added
             }

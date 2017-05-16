@@ -17,6 +17,12 @@
                         $('<li>', { text: item.Message }).appendTo($('#comments'))
                     })
                 })
+
+
+            /*Posts a Comment from submit form*/
+            $("#PostForm").submit(function () {
+                $.post('/api/Comment/Put', $("#PostForm").serialize())
+            })
         }
     }
 }
