@@ -12,5 +12,12 @@
     </form>
 </div>
 
+<div>
+    <h2>Search by topic</h2>
+    <form id="SearchTopicForm">
+        <input name="topic" type="text" placeholder="topic" />
+        <input type="submit" value="Submit" />
+    </form>
+</div>
 
-<script>$(Document).ready(CommentProject.Api.getAllComments())</script>
+<script>$(Document).ready(CommentProject.Api.init())</script>
