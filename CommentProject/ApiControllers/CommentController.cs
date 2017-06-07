@@ -26,6 +26,8 @@ namespace CommentProject.ApiControllers
                 return Ok(returnValue); //returns the comment that ahs been added
             }
         }
+
+        /*USED FOR DEVELOPMENT*/
         public IEnumerable<Comment> GetAllFromTopic()
         {
             /*
@@ -52,6 +54,7 @@ namespace CommentProject.ApiControllers
             //    return db.Comments.ToArray();
             //}
         }
+
         [HttpGet]
         [Route("api/Comment/Search")]
         public IEnumerable<Comment> Get(string topic)
