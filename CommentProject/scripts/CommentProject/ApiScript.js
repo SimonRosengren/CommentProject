@@ -8,6 +8,7 @@
             $("#SearchTopicForm").submit(function (e) {
                 e.preventDefault()
                 $.get('/api/Comment/Search?' + $("#SearchTopicForm").serialize()).done(function (data) {
+                    const ul = document.getElementById("comments")
                     $.each(data, function (key, item) {
                         const markup =
                          `<div class="container">
@@ -21,7 +22,9 @@
                                 </div>
                             </div>
                         </div>`;
-                        document.getElementById("comments").innerHTML = markup;
+                        var li = document.createElement("li")
+                        li.innerHTML = markup
+                        ul.appendChild(li)
                     })
                 })
             })
