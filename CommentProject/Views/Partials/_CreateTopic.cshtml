@@ -4,11 +4,12 @@
             <span class="tip tip-up"></span>
             <form>
                 <div class="smallerz">
-                    <input  id="" name="author" type="text" placeholder="Name" />
-                    <input  id="" name="topic" type="text" placeholder="Topic" />
-                </div>               
+                    <input id="" name="author" type="text" placeholder="Name" />
+                    <input id="" name="topic" type="text" placeholder="Topic" />
+                </div>
                 <input id="" name="message" type="text" placeholder="comment..." />
             </form>
+            <span class="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Post</span>
         </div>
     </div>
 </div>
