@@ -43,6 +43,14 @@
             $.post('/api/post/answer?answer=' + $("#commentInput").val() + "&parent=" + data)
         },
 
+        topics: function () {
+            $.getJSON('/api/Topic').done(function (data) {
+                $.each(data, function (key, item) {
+                    $('<li>', { text: item.Topic }).appendTo($('#topics'))
+                })
+            })
+        },
+
         /*Returns the Comment Mark up*/
         CommentMarkUp: function (item) {
             const markup =
@@ -60,7 +68,13 @@
                             <input id ="commentInput" name="answer" type="text" placeholder="comment..." />
                         </form>
                    </div>
-                </div>`            return markup;
+                </div>`
+            return markup;
         }
     }
 }
+$(document).ready(function () {
+    CommentProject.Api.init();
+    CommentProject.Api.topics();
+    console.log("ready");
+})

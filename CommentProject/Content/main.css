@@ -6,12 +6,13 @@
     margin: 0;
     padding: 15px;
     background-color: #a8a8a8;
+    text-align:center
 }
 .top-nav-list li{
     display: inline;
     padding: 10px;
     color: white;
-    border-right: 1px solid #bbb;
+    border-right: 1px solid #bbb;     
 }
 
 /*COMMENT BOX*/
