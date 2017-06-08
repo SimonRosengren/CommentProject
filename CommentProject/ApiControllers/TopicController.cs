@@ -15,10 +15,8 @@ namespace CommentProject.ApiControllers
         [Route("api/Topic")]
         public IEnumerable<Comment> Get()
         {
-            //Comment com = new Comment();
             using (var db = new CommentDbContext())
             {
-                //var Test = db.Comments.Where(s => s.Topic == com.Topic).ToArray();
                 var comment = (from c in db.Comments
                                where c.Topic != null
                                group c by new { c.Topic }
