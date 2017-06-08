@@ -40,7 +40,7 @@
 
         /*Post a comment to a comment*/
         Comment: function (data) {
-            $.post('/api/post/answer?answer=' + $("#commentInput").val() + "&parent=" + data)
+            $.post('/api/post/answer?answer=' + $("#commentInput" + data).val() + "&parent=" + data)
         },
 
         topics: function () {
@@ -74,11 +74,11 @@
                                 <div class="message">
                                     <span>${item.Message}</span>
                                 </div>
-                                <span class="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
+                                                            <form>
+                                <input id ="commentInput${item.ID}" name="answer" type="text" placeholder="comment..." />
+                            </form>
+                                <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
                         </div>
-                        <form>
-                            <input id ="commentInput" name="answer" type="text" placeholder="comment..." />
-                        </form>
                    </div>
                 </div>`
             return markup;
