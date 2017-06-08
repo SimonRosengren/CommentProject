@@ -36,6 +36,19 @@
                     // $('<li>', { text: item.Message }).appendTo($('#comments'))
                 })
             })
+        },
+        topics: function () {
+            $.getJSON('/api/Topic').done(function (data) {
+                $.each(data, function (key, item) {
+                    $('<li>', { text: item.Topic }).appendTo($('#topics'))
+                })
+            })
         }
     }
 }
+
+$(document).ready(function () {
+    CommentProject.Api.init();
+    CommentProject.Api.topics();
+    console.log("ready");
+})
