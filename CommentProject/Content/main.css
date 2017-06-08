@@ -1,11 +1,14 @@
 ﻿body{
-    background-color: #fff;
+    background-color: #272123;
+}
+ul{
+        list-style-type: none;
 }
 .top-nav-list{
     list-style-type: none;
     margin: 0;
     padding: 15px;
-    background-color: #a8a8a8;
+    background-color: #D9593D;
     text-align:center
 }
 .top-nav-list li{
@@ -36,7 +39,7 @@
   height: 0px;
   position: absolute;
   background: transparent;
-  border: 10px solid #ccc;
+  border: 10px solid #B0C5BB;
 }
 
 .tip-up {
@@ -53,9 +56,16 @@
   height: auto;
   margin: 20px 10px;
   padding: 20px;
-  background-color: rgba(171, 176, 206, 0.4);
-  border-radius: 3px;
-  border: 5px solid #ccc;
+  background-color: #B0C5BB;
+  border-radius: 5px;
+  border: 5px solid #B0C5BB;
+}
+.dialogbox input[type=text] {
+    width: 100%;
+    padding: 20px 20px;
+    border: 3px solid #fff;
+    box-sizing: border-box;
+    border-radius: 6px;
 }
 .body .author{
   font-weight: bold;
@@ -64,17 +74,24 @@
   font-family: Arial;
   font-size: 13px;
   line-height: 1.5;
-  color: #797979;
+  color: #fff;
 }
-.body .comment{
+.body .comment {
   font-weight: bold;
   min-height: 30px;
   border-radius: 3px;
   font-family: Arial;
   font-size: 13px;
   line-height: 1.5;
-  color: #797979;
+  color: #fff;
   float: right;
+}
+.comment a:hover {
+    color: black;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 }
 .body .message {
   min-height: 30px;
@@ -82,5 +99,5 @@
   font-family: Arial;
   font-size: 14px;
   line-height: 1.5;
-  color: #797979;
+  color: #fff;
 }

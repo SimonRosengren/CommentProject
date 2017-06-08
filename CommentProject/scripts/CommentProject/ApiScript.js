@@ -62,11 +62,11 @@
                                 <div class="message">
                                     <span>${item.Message}</span>
                                 </div>
-                                <span class="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
+                                                            <form>
+                                <input id ="commentInput${item.ID}" name="answer" type="text" placeholder="comment..." />
+                            </form>
+                                <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
                         </div>
-                        <form>
-                            <input id ="commentInput${item.ID}" name="answer" type="text" placeholder="comment..." />
-                        </form>
                    </div>
                 </div>`
             return markup;
