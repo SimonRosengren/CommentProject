@@ -159,6 +159,13 @@ ul{
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
 }
+#topicform {
+    zoom: 2.0;
+    -moz-transform: scale(2.0);
+    width:400px;    
+    margin:auto;
+    margin-top:75px;
+}
 .body .message {
   min-height: 30px;
   border-radius: 3px;
@@ -166,4 +173,10 @@ ul{
   font-size: 14px;
   line-height: 1.5;
   color: #fff;
+}
+
+.dialogbox .smallerz input[type=text] {
+    zoom: 0.5;
+    -moz-transform: scale(0.5);
+    margin-bottom:5px;
 }
