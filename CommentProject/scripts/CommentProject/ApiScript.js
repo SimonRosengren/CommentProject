@@ -78,6 +78,7 @@
                                 <input id ="commentInput${item.ID}" name="answer" type="text" placeholder="comment..." />
                             </form>
                                 <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
+                                <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">V</span>
                         </div>
                    </div>
                 </div>`
