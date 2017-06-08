@@ -46,7 +46,19 @@
         topics: function () {
             $.getJSON('/api/Topic').done(function (data) {
                 $.each(data, function (key, item) {
-                    $('<li>', { text: item.Topic }).appendTo($('#topics'))
+                    $('<li><a href="" id="topiclink">' + item.Topic + '</a>').appendTo($('#topics'))
+                })
+            })
+        },
+
+        clicktopics: function (e) {
+            console.log($("#topiclink"))
+            $("#topiclink").click(function (e) {
+                //e.preventDefault();
+                $.get('/api/Comment/Search?' + $("#SearchTopicForm").serialize()).done(function (data) {
+                    $.each(data, function (key, item) {
+                        $('<li>', { text: item.Topic }).appendTo($('#selectedtopic'))
+                    })
                 })
             })
         },
@@ -76,5 +88,6 @@
 $(document).ready(function () {
     CommentProject.Api.init();
     CommentProject.Api.topics();
+    CommentProject.Api.clicktopics();
     console.log("ready");
 })
