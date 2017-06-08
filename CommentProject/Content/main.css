@@ -1,21 +1,31 @@
 ﻿body{
     background-color: #272123;
+    margin: 0px;
 }
 ul{
-        list-style-type: none;
+    list-style-type: none;
+}
+.nav-bar-wrapper{
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    text-align: center;
 }
 .top-nav-list{
-    list-style-type: none;
     margin: 0;
     padding: 15px;
-    background-color: #D9593D;
-    text-align:center
+    background-color: rgba(217, 89, 61, 0.9);
+    overflow: hidden;
+    position: relative;   
 }
 .top-nav-list li{
     display: inline;
     padding: 10px;
     color: white;
     border-right: 1px solid #bbb;     
+}
+.top.top-nav-list li a:active{
+    color: #B0C5BB;
 }
 
 .top-nav-list a{
@@ -26,7 +36,7 @@ ul{
 }
 
 .top-nav-list a:hover { 
-	color: black;
+	color: #B0C5BB;
 	-webkit-transition: all 0.5s ease-out; 
      -moz-transition: all 0.5s ease-out;  
        -o-transition: all 0.5s ease-out;  
