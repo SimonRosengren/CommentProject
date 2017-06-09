@@ -2,6 +2,7 @@
     Api: {
         /*Initialize all required functions*/
         init: function (e) {
+            this.hookevents()
             $("#PostForm").submit(function () {
                 $.post('/api/Comment/Post', $("#PostForm").serialize())
             })
@@ -51,16 +52,22 @@
             })
         },
 
+        hookevents: function () {
+            $("#topiclink").on('click', CommentProject.Api.clicktopics)
+            $("#postbutton").click(this.posttopic)
+        },
+
         clicktopics: function (e) {
-            console.log($("#topiclink"))
-            $("#topiclink").click(function (e) {
-                //e.preventDefault();
-                $.get('/api/Comment/Search?' + $("#SearchTopicForm").serialize()).done(function (data) {
-                    $.each(data, function (key, item) {
-                        $('<li>', { text: item.Topic }).appendTo($('#selectedtopic'))
-                    })
+            e.preventDefault()
+            $.get('/api/Comment/Search?' + $("#SearchTopicForm").serialize()).done(function (data) {
+                $.each(data, function (key, item) {
+                    $('<li>', { text: item.Topic }).appendTo($('#selectedtopic'))
                 })
             })
+        },
+
+        posttopic: function (e) {
+            $.post('/api/Comment/Post', $("#PostForm").serialize())
         },
 
         /*Returns the Comment Mark up*/
@@ -89,6 +96,8 @@
 $(document).ready(function () {
     CommentProject.Api.init();
     CommentProject.Api.topics();
-    CommentProject.Api.clicktopics();
+    //CommentProject.Api.hookevents();
+    //CommentProject.Api.clicktopics();
+    //CommentProject.Api.posttopic();
     console.log("ready");
 })

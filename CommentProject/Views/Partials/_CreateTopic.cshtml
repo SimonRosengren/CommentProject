@@ -2,14 +2,14 @@
     <div class="dialogbox">
         <div class="body">
             <span class="tip tip-up"></span>
-            <form>
+            <form id="PostForm">
                 <div class="smallerz">
-                    <input id="" name="author" type="text" placeholder="Name" />
-                    <input id="" name="topic" type="text" placeholder="Topic" />
+                    <input id="" name="Author" type="text" placeholder="Name" />
+                    <input id="" name="Topic" type="text" placeholder="Topic" />
                 </div>
-                <input id="" name="message" type="text" placeholder="comment..." />
+                <input id="" name="Message" type="text" placeholder="Comment" />
             </form>
-            <span class="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Post</span>
+            <span class="comment" id="postbutton">Post</span>
         </div>
     </div>
 </div>
