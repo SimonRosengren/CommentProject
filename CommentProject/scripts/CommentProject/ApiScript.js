@@ -12,19 +12,9 @@
                     $.each(data, function (key, item) {
                         const markup = CommentProject.Api.CommentMarkUp(item)
                         var li = document.createElement("li")
+                        li.setAttribute("id", "commentLi" + item.ID)
                         li.innerHTML = markup
                         ul.appendChild(li)
-                        /*Create a new UL*/
-                        var childUl = document.createElement("ul")
-                        li.appendChild(childUl);
-                        /*Recursivley call for children*/
-                        $.get('/api/get/child?parent=' + item.ID).done(function (data) {
-                            $.each(data, function (key, item) {
-                                var childLi = document.createElement("li")
-                                childLi.innerHTML = CommentProject.Api.CommentMarkUp(item)
-                                childUl.appendChild(childLi)
-                            })
-                        })
                     })
                 })
             })
@@ -62,6 +52,28 @@
                 })
             })
         },
+        /*Get the direct children of given parent ID*/
+        GetChildComment: function (parent) {
+            if ($("#commentLi" + parent).hasClass('active')) {
+                $("#commentLi" + parent).removeClass()
+                $("#commentLi" + parent).children('ul').remove()
+                return; //To prevent it to continue to add list anyways
+            }
+            else {
+                $("#commentLi" + parent).addClass('active')
+            }
+            /*Create a new UL*/
+            var childUl = document.createElement("ul");
+            document.getElementById("commentLi" + parent).appendChild(childUl);
+            /*Recursivley call for children*/
+            $.get('/api/get/child?parent=' + parent).done(function (data) {
+                $.each(data, function (key, item) {
+                    var childLi = document.createElement("li")
+                    childLi.innerHTML = CommentProject.Api.CommentMarkUp(item)
+                    childUl.appendChild(childLi)
+                })
+            })
+        },
 
         /*Returns the Comment Mark up*/
         CommentMarkUp: function (item) {
@@ -78,7 +90,7 @@
                                 <input id ="commentInput${item.ID}" name="answer" type="text" placeholder="comment..." />
                             </form>
                                 <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
-                                <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">V</span>
+                                <span class ="comment" onclick="CommentProject.Api.GetChildComment('${item.ID}')">V</span>
                         </div>
                    </div>
                 </div>`
