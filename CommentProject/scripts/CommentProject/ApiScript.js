@@ -44,21 +44,21 @@
         topics: function () {
             $.getJSON('/api/Topic').done(function (data) {
                 $.each(data, function (key, item) {
-                    $('<li><a href="" id="topiclink">' + item.Topic + '</a>').appendTo($('#topics'))
+                    $('<li><a href="" data-id="'+ item.Topic + '" class="topiclink">' + item.Topic + '</a>').appendTo($('#topics'))
                 })
                 CommentProject.Api.hookevents()
             })
         },
 
         hookevents: function () {
-            $("#topiclink").click(this.clicktopics)
+            $(".topiclink").click(this.clicktopics)
             $("#postbutton").click(this.posttopic)
         },
 
         clicktopics: function (e) {
             e.preventDefault()
-            console.log($("#topiclink").text())
-            $.get('/api/Comment/Search?topic=' + $("#topiclink").text()).done(function (data) {
+            console.log($(this).data('id'))
+            $.get('/api/Comment/Search?topic=' + $(this).data('id')).done(function (data) {
                 const ul = document.getElementById("comments")
                 $.each(data, function (key, item) {
                     const markup = CommentProject.Api.CommentMarkUp(item)
