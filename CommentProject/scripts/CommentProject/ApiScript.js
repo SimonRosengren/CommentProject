@@ -46,7 +46,7 @@
         },
 
         clicktopics: function (e) {
-            e.preventDefault()
+            window.location.replace("/Views/Topics/Index")
             console.log($(this).data('id'))
             $.get('/api/Comment/Search?topic=' + $(this).data('id')).done(function (data) {
                 const ul = document.getElementById("comments")
