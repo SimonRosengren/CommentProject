@@ -46,28 +46,19 @@
         },
 
         clicktopics: function (e) {
-            window.location.replace("/Views/Topics/Index")
-            console.log($(this).data('id'))
+            e.preventDefault()
+            $("#home-page-wrapper").empty()
             $.get('/api/Comment/Search?topic=' + $(this).data('id')).done(function (data) {
                 const ul = document.getElementById("comments")
                 $.each(data, function (key, item) {
                     const markup = CommentProject.Api.CommentMarkUp(item)
                     var li = document.createElement("li")
+                    li.setAttribute("id", "commentLi" + item.ID)
                     li.innerHTML = markup
                     ul.appendChild(li)
-                    /*Create a new UL*/
-                    var childUl = document.createElement("ul")
-                    li.appendChild(childUl);
-                    /*Recursivley call for children*/
-                    $.get('/api/get/child?parent=' + item.ID).done(function (data) {
-                        $.each(data, function (key, item) {
-                            var childLi = document.createElement("li")
-                            childLi.innerHTML = CommentProject.Api.CommentMarkUp(item)
-                            childUl.appendChild(childLi)
-                        })
-                    })
                 })
             })
+            console.log($(this).data('id'))
         },
         /*Get the direct children of given parent ID*/
         GetChildComment: function (parent) {

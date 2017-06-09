@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace CommentProject.Controllers
 {
-    public class TopicController : Controller
+    public class TopicsController : Controller
     {
         public ActionResult Index()
         {
