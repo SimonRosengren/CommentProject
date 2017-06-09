@@ -3,9 +3,6 @@
         /*Initialize all required functions*/
         init: function (e) {
             this.hookevents()
-            $("#PostForm").submit(function () {
-                $.post('/api/Comment/Post', $("#PostForm").serialize())
-            })
             $("#SearchTopicForm").submit(function (e) {
                 e.preventDefault()
                 $.get('/api/Comment/Search?' + $("#SearchTopicForm").serialize()).done(function (data) {
