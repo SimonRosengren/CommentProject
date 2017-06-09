@@ -87,6 +87,7 @@
                 $.each(data, function (key, item) {
                     var childLi = document.createElement("li")
                     childLi.innerHTML = CommentProject.Api.CommentMarkUp(item)
+                    childLi.setAttribute("id", "commentLi" + item.ID)
                     childUl.appendChild(childLi)
                 })
             })

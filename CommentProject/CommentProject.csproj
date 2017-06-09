@@ -188,6 +188,7 @@
     <Content Include="Views\SearchTopic\Index.cshtml" />
     <Content Include="Views\CreateTopic\Index.cshtml" />
     <Content Include="Views\Partials\_CreateTopic.cshtml" />
+    <Content Include="Views\Topics\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
