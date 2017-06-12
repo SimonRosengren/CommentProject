@@ -17,7 +17,7 @@
 
     RandomTopic: function () {
         $.get('/api/get/random').done(function (data) {
-            CommentProject.Comment.SearchByParam(data);
+            CommentProject.Topic.SearchByParam(data);
         })
     },
 

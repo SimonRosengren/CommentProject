@@ -14,8 +14,8 @@
                                 <input id ="nameInput${item.ID}" name="author" type="text" placeholder="name" />
                                 <input id ="commentInput${item.ID}" name="answer" type="text" placeholder="comment..." />
                             </form>
-                                <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
-                                <span class ="comment" onclick="CommentProject.Api.GetChildComment('${item.ID}')">V</span>
+                                <span class ="comment" onclick="CommentProject.Comment.Comment('${item.ID}')">Comment</span>
+                                <span class ="comment" onclick="CommentProject.Comment.GetChildComment('${item.ID}')">V</span>
                                 <span class ="like" onclick="CommentProject.Api.LikeComment('${item.ID}')">Like</span>
                                 <span class ="likeOutput">${item.Likes}</span>
                         </div>
