@@ -30,7 +30,7 @@ namespace CommentProject.ApiControllers
         /*Lägg till sp att man kan fykla i namn även här. Fixa också kommentarsfältet!*/
         [HttpPost]
         [Route("api/post/answer")]
-        public IHttpActionResult PostAnswer(string answer, int parent)
+        public IHttpActionResult PostAnswer(string author, string answer, int parent)
         {
             if (answer == null) 
             {
@@ -38,7 +38,7 @@ namespace CommentProject.ApiControllers
             }
             Comment comment = new Comment();
             comment.Parent = parent;
-            comment.Author = "AnswerName";
+            comment.Author = author;
             comment.Message = answer;
             using (var db = new CommentDbContext())
             {
