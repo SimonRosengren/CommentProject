@@ -2,19 +2,14 @@
     Api: {
         /*Initialize all required functions*/
         init: function (e) {
-            this.hookevents()
-            $("#SearchTopicForm").submit(function (e) {
-                e.preventDefault()
-                $.get('/api/Comment/Search?' + $("#SearchTopicForm").serialize()).done(function (data) {
-                    const ul = document.getElementById("comments")
-                    $.each(data, function (key, item) {
-                        const markup = CommentProject.Api.CommentMarkUp(item)
-                        var li = document.createElement("li")
-                        li.setAttribute("id", "commentLi" + item.ID)
-                        li.innerHTML = markup
-                        ul.appendChild(li)
-                    })
-                })
+            this.HookEvents()
+            this.LoadTopics()
+        },
+
+        Search: function(e){
+            e.preventDefault()
+            $.get('/api/Comment/Search?' + $("#SearchTopicForm").serialize()).done(function (data) {
+                CommentProject.Api.CreateCommentList(data)
             })
         },
 
@@ -22,14 +17,18 @@
             //e.preventDefault()
             $("#home-page-wrapper").empty()
             $.get('/api/Comment/Search?topic=' + comment.Topic).done(function (data) {
-                const ul = document.getElementById("comments")
-                $.each(data, function (key, item) {
-                    const markup = CommentProject.Api.CommentMarkUp(item)
-                    var li = document.createElement("li")
-                    li.setAttribute("id", "commentLi" + item.ID)
-                    li.innerHTML = markup
-                    ul.appendChild(li)
-                })
+                CommentProject.Api.CreateCommentList(data)
+            })
+        },
+
+        CreateCommentList: function(data){
+            const ul = document.getElementById("comments")
+            $.each(data, function (key, item) {
+                const markup = CommentProject.Api.CommentMarkUp(item)
+                var li = document.createElement("li")
+                li.setAttribute("id", "commentLi" + item.ID)
+                li.innerHTML = markup
+                ul.appendChild(li)
             })
         },
 
@@ -38,43 +37,37 @@
             $.post('/api/post/answer?author=' + $("#nameInput" + data).val() + '&answer=' + $("#commentInput" + data).val() + "&parent=" + data)
         },
 
-        topics: function () {
+        LoadTopics: function () {
             $.getJSON('/api/get/topic').done(function (data) {
                 $.each(data, function (key, item) {
                     $('<li><a href="" data-id="'+ item.Topic + '" class="topiclink">' + item.Topic + '</a>').appendTo($('#topics'))
                 })
-                CommentProject.Api.hookevents()
+                CommentProject.Api.HookEvents()
             })
         },
 
-        randomtopic: function(){
+        RandomTopic: function(){
             $.get('/api/get/random').done(function(data){
                 CommentProject.Api.SearchByParam(data);
             })
         },
 
-        hookevents: function () {
+        HookEvents: function () {
             $(".topiclink").click(this.clicktopics)
-            $("#postbutton").click(this.posttopic)
-            $("#random").click(this.randomtopic)
+            $("#postbutton").click(this.PostTopic)
+            $("#random").click(this.RandomTopic)
+            $("#SearchTopicForm").submit(this.Search)
         },
 
         clicktopics: function (e) {
             e.preventDefault()
             $("#home-page-wrapper").empty()
             $.get('/api/Comment/Search?topic=' + $(this).data('id')).done(function (data) {
-                const ul = document.getElementById("comments")
-                $.each(data, function (key, item) {
-                    const markup = CommentProject.Api.CommentMarkUp(item)
-                    var li = document.createElement("li")
-                    li.setAttribute("id", "commentLi" + item.ID)
-                    li.innerHTML = markup
-                    ul.appendChild(li)
-                })
+                CommentProject.Api.CreateCommentList(data)
             })
         },
-        /*Get the direct children of given parent ID*/
-        GetChildComment: function (parent) {
+
+        HandleCommentDropdown: function(parent){
             if ($("#commentLi" + parent).hasClass('active')) {
                 $("#commentLi" + parent).removeClass()
                 $("#commentLi" + parent).children('ul').remove()
@@ -82,6 +75,14 @@
             }
             else {
                 $("#commentLi" + parent).addClass('active')
+            }
+        },
+        /*Get the direct children of given parent ID*/
+        GetChildComment: function (parent) {
+            CommentProject.Api.HandleCommentDropdown(parent)
+            /*If comment already is showing children, return*/
+            if (!$("#commentLi" + parent).hasClass('active')) {
+                return;
             }
             /*Create a new UL*/
             var childUl = document.createElement("ul");
@@ -97,7 +98,7 @@
             })
         },
 
-        posttopic: function () {
+        PostTopic: function () {
             $.post('/api/Comment/Post', $("#PostForm").serialize())
         },
 
@@ -127,6 +128,4 @@
 }
 $(document).ready(function () {
     CommentProject.Api.init();
-    CommentProject.Api.topics();
-    console.log("ready");
 })
