@@ -18,9 +18,24 @@
             })
         },
 
+        SearchByParam: function(comment){
+            e.preventDefault()
+            $("#home-page-wrapper").empty()
+            $.get('/api/Comment/Search?' + comment.Topic).done(function (data) {
+                const ul = document.getElementById("comments")
+                $.each(data, function (key, item) {
+                    const markup = CommentProject.Api.CommentMarkUp(item)
+                    var li = document.createElement("li")
+                    li.setAttribute("id", "commentLi" + item.ID)
+                    li.innerHTML = markup
+                    ul.appendChild(li)
+                })
+            })
+        },
+
         /*Post a comment to a comment*/
         Comment: function (data) {
-            $.post('/api/post/answer?answer=' + $("#commentInput" + data).val() + "&parent=" + data)
+            $.post('/api/post/answer?author=' + $("#nameInput" + data).val() + '&answer=' + $("#commentInput" + data).val() + "&parent=" + data)
         },
 
         topics: function () {
@@ -90,7 +105,8 @@
                                 <div class="message">
                                     <span>${item.Message}</span>
                                 </div>
-                                                            <form>
+                            <form>
+                                <input id ="nameInput${item.ID}" name="author" type="text" placeholder="name" />
                                 <input id ="commentInput${item.ID}" name="answer" type="text" placeholder="comment..." />
                             </form>
                                 <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
