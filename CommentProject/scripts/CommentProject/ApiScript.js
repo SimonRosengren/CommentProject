@@ -2,8 +2,8 @@
     Api: {
         /*Initialize all required functions*/
         init: function (e) {
-            this.HookEvents()
             this.LoadTopics()
+            this.HookEvents()
         },
 
         Search: function(e){
@@ -42,7 +42,6 @@
                 $.each(data, function (key, item) {
                     $('<li><a href="" data-id="'+ item.Topic + '" class="topiclink">' + item.Topic + '</a>').appendTo($('#topics'))
                 })
-                CommentProject.Api.HookEvents()
             })
         },
 
@@ -53,13 +52,14 @@
         },
 
         HookEvents: function () {
-            $(".topiclink").click(this.clicktopics)
+            //$(".topiclink").click(this.GetClickedTopic)
             $("#postbutton").click(this.PostTopic)
             $("#random").click(this.RandomTopic)
             $("#SearchTopicForm").submit(this.Search)
+            $("#topics").on('click', '.topiclink', this.GetClickedTopic)
         },
 
-        clicktopics: function (e) {
+        GetClickedTopic: function (e) {
             e.preventDefault()
             $("#home-page-wrapper").empty()
             $.get('/api/Comment/Search?topic=' + $(this).data('id')).done(function (data) {
