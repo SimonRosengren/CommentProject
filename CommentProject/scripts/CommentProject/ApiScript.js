@@ -16,14 +16,6 @@
                     })
                 })
             })
-
-            $.getJSON('/api/Comment').done(function (data) {
-                // On success, 'data' contains a list of products.
-                $.each(data, function (key, item) {
-                    // Add a list item for the product.
-                    // $('<li>', { text: item.Message }).appendTo($('#comments'))
-                })
-            })
         },
 
         /*Post a comment to a comment*/
@@ -32,7 +24,7 @@
         },
 
         topics: function () {
-            $.getJSON('/api/Topic').done(function (data) {
+            $.getJSON('/api/get/random').done(function (data) {
                 $.each(data, function (key, item) {
                     $('<li><a href="" data-id="'+ item.Topic + '" class="topiclink">' + item.Topic + '</a>').appendTo($('#topics'))
                 })
@@ -58,7 +50,6 @@
                     ul.appendChild(li)
                 })
             })
-            console.log($(this).data('id'))
         },
         /*Get the direct children of given parent ID*/
         GetChildComment: function (parent) {
@@ -114,8 +105,5 @@
 $(document).ready(function () {
     CommentProject.Api.init();
     CommentProject.Api.topics();
-    //CommentProject.Api.hookevents();
-    //CommentProject.Api.clicktopics();
-    //CommentProject.Api.posttopic();
     console.log("ready");
 })
