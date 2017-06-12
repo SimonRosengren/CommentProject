@@ -18,10 +18,10 @@
             })
         },
 
-        SearchByParam: function(e, comment){
-            e.preventDefault()
+        SearchByParam: function(comment){
+            //e.preventDefault()
             $("#home-page-wrapper").empty()
-            $.get('/api/Comment/Search?' + comment.Topic).done(function (data) {
+            $.get('/api/Comment/Search?topic=' + comment.Topic).done(function (data) {
                 const ul = document.getElementById("comments")
                 $.each(data, function (key, item) {
                     const markup = CommentProject.Api.CommentMarkUp(item)
