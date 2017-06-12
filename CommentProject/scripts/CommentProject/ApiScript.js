@@ -18,7 +18,7 @@
             })
         },
 
-        SearchByParam: function(comment){
+        SearchByParam: function(e, comment){
             e.preventDefault()
             $("#home-page-wrapper").empty()
             $.get('/api/Comment/Search?' + comment.Topic).done(function (data) {
@@ -39,7 +39,7 @@
         },
 
         topics: function () {
-            $.getJSON('/api/get/random').done(function (data) {
+            $.getJSON('/api/get/topic').done(function (data) {
                 $.each(data, function (key, item) {
                     $('<li><a href="" data-id="'+ item.Topic + '" class="topiclink">' + item.Topic + '</a>').appendTo($('#topics'))
                 })
@@ -47,9 +47,16 @@
             })
         },
 
+        randomtopic: function(){
+            $.get('/api/get/random').done(function(data){
+                CommentProject.Api.SearchByParam(data);
+            })
+        },
+
         hookevents: function () {
             $(".topiclink").click(this.clicktopics)
             $("#postbutton").click(this.posttopic)
+            $("#random").click(this.randomtopic)
         },
 
         clicktopics: function (e) {
