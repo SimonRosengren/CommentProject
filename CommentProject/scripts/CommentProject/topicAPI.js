@@ -1,0 +1,5 @@
+﻿CommentProject.Topic = {
+    Init: function () {
+
+    }
+}

@@ -150,6 +150,10 @@
     <Content Include="scripts\bootstrap.min.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\CommentProject\ApiScript.js" />
+    <Content Include="scripts\CommentProject\commentAPI.js" />
+    <Content Include="scripts\CommentProject\main.js" />
+    <Content Include="scripts\CommentProject\markup.js" />
+    <Content Include="scripts\CommentProject\topicAPI.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />

@@ -4,7 +4,7 @@
     <link href="~/Content/main.css" rel="stylesheet" type="text/css" />
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-    <script src="~/Scripts/CommentProject/ApiScript.js"></script>
+    
 </head>
 <body>
     @Html.Partial("/Views/Partials/_NavBar.cshtml")
@@ -13,6 +13,10 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-
+    <script src="~/Scripts/CommentProject/main.js"></script>
+    <script src="~/Scripts/CommentProject/markup.js"></script>
+    <script src="~/Scripts/CommentProject/commentAPI.js"></script>
+    <script src="~/Scripts/CommentProject/topicAPI.js"></script>
+    <script src="~/Scripts/CommentProject/ApiScript.js"></script>
 </body>
 </html>
