@@ -12,5 +12,6 @@ namespace CommentProject.Models
         public string Author { get; set; }
         public string Message { get; set; }
         public string Topic { get; set; }
+        public int Likes { get; set; }
     }
 }

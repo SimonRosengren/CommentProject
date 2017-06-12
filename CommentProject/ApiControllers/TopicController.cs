@@ -17,6 +17,10 @@ namespace CommentProject.ApiControllers
         {
             using (var db = new CommentDbContext())
             {
+                if (db.Comments.Count() <= 0)
+                {
+                    return null;
+                }
                 var comment = (from c in db.Comments
                                where c.Topic != null
                                group c by new { c.Topic }

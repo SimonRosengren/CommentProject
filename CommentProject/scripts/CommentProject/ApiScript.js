@@ -102,6 +102,10 @@
             $.post('/api/Comment/Post', $("#PostForm").serialize())
         },
 
+        LikeComment: function(ID){
+            $.post('/api/post/like?ID=' + ID)
+        },
+
         /*Returns the Comment Mark up*/
         CommentMarkUp: function (item) {
             const markup =
@@ -119,6 +123,8 @@
                             </form>
                                 <span class ="comment" onclick="CommentProject.Api.Comment('${item.ID}')">Comment</span>
                                 <span class ="comment" onclick="CommentProject.Api.GetChildComment('${item.ID}')">V</span>
+                                <span class ="like" onclick="CommentProject.Api.LikeComment('${item.ID}')">Like</span>
+                                <span class ="likeOutput">${item.Likes}</span>
                         </div>
                    </div>
                 </div>`

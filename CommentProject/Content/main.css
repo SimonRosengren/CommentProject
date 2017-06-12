@@ -196,6 +196,16 @@ ul{
   line-height: 1.5;
   color: #fff;
 }
+.body .likeOutput, .body .like{
+  font-weight: bold;
+  min-height: 30px;
+  border-radius: 3px;
+  font-family: Arial;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #fff;
+  float: left;
+}
 .body .comment {
   font-weight: bold;
   min-height: 30px;

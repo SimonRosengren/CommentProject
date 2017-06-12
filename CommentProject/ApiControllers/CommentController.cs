@@ -47,6 +47,19 @@ namespace CommentProject.ApiControllers
                 return Ok(returnValue); //returns the comment that ahs been added
             }
         }
+
+        [HttpPost]
+        [Route("api/post/like")]
+        public IHttpActionResult LikeComment(int ID)
+        {
+            using (var db = new CommentDbContext())
+            {
+                db.Comments.FirstOrDefault(c => c.ID == ID).Likes++;
+                db.SaveChanges();
+                return Ok();
+            }
+        }
+
         /*Returns all children of given parent*/
         [HttpGet]
         [Route("api/get/child")]
