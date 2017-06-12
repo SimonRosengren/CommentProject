@@ -1,2 +1,17 @@
-﻿@Html.Partial("/Views/Partials/_CreateTopic.cshtml")
+﻿<div class="row">
+    <form id="PostForm">
+        <span>
+            <input class="skinny" name="Author" id="english" type="text" placeholder="" /><label for="name">Name</label>
+        </span>
+        <br />
+        <span>
+            <input class="skinny" name="Topic" id="burger" type="text" placeholder="" /><label for="topic">Topic</label>
+        </span>
+        <br />
+        <span>
+            <input class="skinny" name="Message" id="wallet" type="text" placeholder="Comment..." /><label for="comment">Comment</label>
+        </span>
+    </form>
+    <span class="comment" id="postbutton">Post</span>
+</div>
 
