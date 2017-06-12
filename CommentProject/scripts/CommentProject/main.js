@@ -1,15 +1,14 @@
 ﻿var CommentProject = {
     Init: function () {
-        CommentProject.Api.init()
+        CommentProject.Topic.Init()
         this.HookEvents()
     },
 
     HookEvents: function () {
-        //$(".topiclink").click(this.GetClickedTopic)
-        $("#postbutton").click(CommentProject.Api.PostTopic)
-        $("#random").click(CommentProject.Api.RandomTopic)
-        $("#SearchTopicForm").submit(CommentProject.Api.Search)
-        $("#topics").on('click', '.topiclink', CommentProject.Api.GetClickedTopic)
+        $("#postbutton").click(CommentProject.Topic.PostTopic)
+        $("#random").click(CommentProject.Topic.RandomTopic)
+        $("#SearchTopicForm").submit(CommentProject.Topic.Search)
+        $("#topics").on('click', '.topiclink', CommentProject.Topic.GetClickedTopic)
     }
 }
 
