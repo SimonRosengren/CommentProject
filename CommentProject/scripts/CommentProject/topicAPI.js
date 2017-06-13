@@ -1,6 +1,14 @@
 ﻿CommentProject.Topic = {
     Init: function () {
         this.LoadTopics()
+        this.HookEvents()
+    },
+
+    HookEvents: function () {
+        $("#postbutton").click(this.PostTopic)
+        $("#random").click(this.RandomTopic)
+        $("#SearchTopicForm").submit(this.Search)
+        $("#topics").on('click', '.topiclink', this.GetClickedTopic)
     },
 
     PostTopic: function () {

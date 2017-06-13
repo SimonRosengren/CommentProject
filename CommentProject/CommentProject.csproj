@@ -149,7 +149,6 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="scripts\CommentProject\ApiScript.js" />
     <Content Include="scripts\CommentProject\commentAPI.js" />
     <Content Include="scripts\CommentProject\main.js" />
     <Content Include="scripts\CommentProject\markup.js" />
@@ -193,6 +192,8 @@
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Partials\_CreateTopic.cshtml" />
+    <Content Include="Views\SearchTopic\Index.cshtml" />
+    <Content Include="Views\CreateTopic\Index.cshtml" />
     <Content Include="Views\Topics\Index.cshtml" />
     <Content Include="Views\Home\Random.cshtml" />
     <None Include="Web.Debug.config">
