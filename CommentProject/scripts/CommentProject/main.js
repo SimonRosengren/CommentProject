@@ -2,7 +2,7 @@
     Init: function () {
         for (var prop in CommentProject) {
             let child = CommentProject[prop]
-            if (typeof child ==='object' && child.hasOwnProperty('init')) {
+            if (typeof child ==='object' && child.hasOwnProperty('Init')) {
                 child.Init()
             }
         }
